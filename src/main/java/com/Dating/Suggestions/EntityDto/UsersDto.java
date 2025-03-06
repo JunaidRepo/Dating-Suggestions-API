@@ -7,14 +7,14 @@ public class UsersDto {
     private String name;
     private String gender;
     private int age;
-    private List<InterestDto> Interest;
+    private List<InterestDto> interest;
 
     public UsersDto(Integer id, String name, String gender, int age, List<InterestDto> interest) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
-        Interest = interest;
+        this.interest = interest;
     }
 
 
@@ -51,10 +51,10 @@ public class UsersDto {
     }
 
     public List<InterestDto> getInterest() {
-        return Interest;
+        return interest;
     }
 
     public void setInterest(List<InterestDto> interest) {
-        Interest = interest;
+        this.interest = interest;
     }
 }

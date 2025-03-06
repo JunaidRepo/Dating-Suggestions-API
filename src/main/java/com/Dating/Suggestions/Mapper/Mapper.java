@@ -16,7 +16,7 @@ public class Mapper {
     }
 
     public static Users mapToUser(UsersDto dto) {
-        List<Interest> lst = dto.getInterest().stream().map(i ->new Interest(i.getId(),i.getInterest())).toList();
+        List<Interest> lst = dto.getInterest().stream().map(i ->new Interest(0,i.getInterest())).toList();
         return new Users(dto.getId(),dto.getName(),dto.getGender(),dto.getAge(),lst);
     }
 }

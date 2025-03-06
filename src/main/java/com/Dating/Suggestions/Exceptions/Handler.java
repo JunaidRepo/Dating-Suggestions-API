@@ -15,23 +15,23 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class Handler {
 
-    @ExceptionHandler
+    @ExceptionHandler(AgeNotValid.class)
     public ResponseEntity<ResponseEnty<String>> ageException(AgeNotValid age){
         return new ResponseEntity<>(new ResponseEnty<>(400,"you are not Eligible",age.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler
+    @ExceptionHandler(Missing.class)
     public ResponseEntity<ResponseEnty<String>> missingException(Missing miss){
         return new ResponseEntity<>(new ResponseEnty<>(400,"enter all the Details",miss.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(CorrectDetails.class)
     public ResponseEntity<ResponseEnty<String>> wrongDetails(CorrectDetails miss){
         return new ResponseEntity<>(new ResponseEnty<>(400,"Recheck the Entered Details",miss.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
 
 
 
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseEnty<String>> mainException(Exception e){
         return new ResponseEntity<>(new ResponseEnty<>(400,"Recheck All the details which you have Entered",e.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }

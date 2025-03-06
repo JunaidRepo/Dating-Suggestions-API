@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+
 @Service
 public class UserServiceImp implements UserService {
     private final repo repo;
@@ -25,6 +26,7 @@ public class UserServiceImp implements UserService {
         dto.setId(0);
         if(dto.getAge() ==0 || dto.getGender()==null ||dto.getInterest()==null|| dto.getInterest().isEmpty() ||dto.getName()==null){
             StringBuilder sb=new StringBuilder();
+            if(dto.getName()==null || dto.getName().trim().isEmpty())sb.append("Name ");
             if(dto.getAge()==0) sb.append("Age ");
             if(dto.getGender()==null) sb.append("Gender ");
             if(dto.getInterest()==null || dto.getInterest().isEmpty()) sb.append("Interest ");
@@ -57,11 +59,14 @@ public class UserServiceImp implements UserService {
         if(opt.isEmpty()) throw new CorrectDetails();
         if(dto.getAge() ==0 || dto.getGender()==null ||dto.getInterest()==null|| dto.getInterest().isEmpty() ||dto.getName()==null){
             StringBuilder sb=new StringBuilder();
+            if(dto.getName()==null)sb.append("Name ");
             if(dto.getAge()==0) sb.append("Age ");
             if(dto.getGender()==null) sb.append("Gender ");
             if(dto.getInterest()==null || dto.getInterest().isEmpty()) sb.append("Interest ");
             throw  new Missing(sb.toString());
         }
+        if(dto.getInterest().size()<2) throw new MinimumInterest();
+        if(dto.getAge()<18) throw new AgeNotValid();
         repo.save(Mapper.mapToUser(dto));
 
     }
