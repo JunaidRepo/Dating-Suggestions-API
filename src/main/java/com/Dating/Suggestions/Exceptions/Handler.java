@@ -2,6 +2,7 @@ package com.Dating.Suggestions.Exceptions;
 
 
 import com.Dating.Suggestions.Exceptions.UserExceptions.AgeNotValid;
+import com.Dating.Suggestions.Exceptions.UserExceptions.CorrectDetails;
 import com.Dating.Suggestions.Exceptions.UserExceptions.Missing;
 import com.Dating.Suggestions.Response.ResponseEnty;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,22 @@ public class Handler {
 
     @ExceptionHandler
     public ResponseEntity<ResponseEnty<String>> ageException(AgeNotValid age){
-        return new ResponseEntity<>(new ResponseEnty<>(400,null,age.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseEnty<>(400,"you are not Eligible",age.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
     @ExceptionHandler
     public ResponseEntity<ResponseEnty<String>> missingException(Missing miss){
-        return new ResponseEntity<>(new ResponseEnty<>(400,null,miss.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseEnty<>(400,"enter all the Details",miss.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ResponseEnty<String>> WrongDetails(CorrectDetails miss){
+        return new ResponseEntity<>(new ResponseEnty<>(400,"Recheck the Entered Details",miss.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
+    }
+
+
+    @ExceptionHandler
+    public ResponseEntity<ResponseEnty<String>> MainException(Exception e){
+        return new ResponseEntity<>(new ResponseEnty<>(400,"Recheck All the details which you have Entered",e.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
 
 }

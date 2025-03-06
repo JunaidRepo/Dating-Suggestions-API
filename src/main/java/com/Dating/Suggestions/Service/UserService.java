@@ -1,14 +1,16 @@
 package com.Dating.Suggestions.Service;
 
 import com.Dating.Suggestions.EntityDto.UsersDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface UserService {
      void add(UsersDto dto);
-     void remove(int id);
-     void update(int id);
-     void all();
-     void get(int id);
+     void remove(Integer id);
+     void update(UsersDto dto);
+     List<UsersDto> all();
+     UsersDto get(Integer id);
      List<UsersDto> match(int id);
 }
