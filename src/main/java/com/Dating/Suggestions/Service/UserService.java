@@ -12,5 +12,5 @@ public interface UserService {
      void update(UsersDto dto);
      List<UsersDto> all();
      UsersDto get(Integer id);
-     List<UsersDto> match(int id);
+     List<UsersDto> match(Integer id);
 }

@@ -25,13 +25,14 @@ public class Handler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<ResponseEnty<String>> WrongDetails(CorrectDetails miss){
+    public ResponseEntity<ResponseEnty<String>> wrongDetails(CorrectDetails miss){
         return new ResponseEntity<>(new ResponseEnty<>(400,"Recheck the Entered Details",miss.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
 
 
+
     @ExceptionHandler
-    public ResponseEntity<ResponseEnty<String>> MainException(Exception e){
+    public ResponseEntity<ResponseEnty<String>> mainException(Exception e){
         return new ResponseEntity<>(new ResponseEnty<>(400,"Recheck All the details which you have Entered",e.getMessage(), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
 
