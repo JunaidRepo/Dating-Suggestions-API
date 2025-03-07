@@ -24,16 +24,16 @@ public class UserServiceImp implements UserService {
     @Override
     public void add(UsersDto dto){
         dto.setId(0);
-        if(dto.getAge() ==0 || dto.getGender()==null ||dto.getInterest()==null|| dto.getInterest().isEmpty() ||dto.getName()==null){
+        if(dto.getAge() ==0 || dto.getGender()==null || dto.getGender().trim().isEmpty() ||dto.getInterest()==null || dto.getInterest().isEmpty() ||dto.getName()==null || dto.getName().trim().isEmpty()){
             StringBuilder sb=new StringBuilder();
             if(dto.getName()==null || dto.getName().trim().isEmpty())sb.append("Name ");
             if(dto.getAge()==0) sb.append("Age ");
-            if(dto.getGender()==null) sb.append("Gender ");
+            if(dto.getGender()==null || dto.getGender().trim().isEmpty()) sb.append("Gender ");
             if(dto.getInterest()==null || dto.getInterest().isEmpty()) sb.append("Interest ");
             throw new Missing(sb.toString());
         }
         if(dto.getAge()<18) throw new AgeNotValid();
-        if(dto.getInterest().size()<2) throw new MinimumInterest();
+        if(dto.getInterest().size()<2 || dto.getInterest().stream().filter(i->!i.getInterest().trim().isEmpty()).count()<2) throw new MinimumInterest();
         Users u= Mapper.mapToUser(dto);
         repo.save(u);
     }
@@ -57,15 +57,15 @@ public class UserServiceImp implements UserService {
         if(dto.getId()==null) throw new CorrectDetails();
         Optional<Users> opt=repo.findById(dto.getId());
         if(opt.isEmpty()) throw new CorrectDetails();
-        if(dto.getAge() ==0 || dto.getGender()==null ||dto.getInterest()==null|| dto.getInterest().isEmpty() ||dto.getName()==null){
+        if(dto.getAge() ==0 || dto.getGender()==null || dto.getGender().trim().isEmpty() ||dto.getInterest()==null|| dto.getInterest().isEmpty() ||dto.getName()==null || dto.getName().trim().isEmpty()){
             StringBuilder sb=new StringBuilder();
-            if(dto.getName()==null)sb.append("Name ");
+            if(dto.getName()==null || dto.getName().trim().isEmpty())sb.append("Name ");
             if(dto.getAge()==0) sb.append("Age ");
-            if(dto.getGender()==null) sb.append("Gender ");
+            if(dto.getGender()==null || dto.getGender().trim().isEmpty()) sb.append("Gender ");
             if(dto.getInterest()==null || dto.getInterest().isEmpty()) sb.append("Interest ");
             throw  new Missing(sb.toString());
         }
-        if(dto.getInterest().size()<2) throw new MinimumInterest();
+        if(dto.getInterest().size()<2 || dto.getInterest().stream().filter(i->!i.getInterest().trim().isEmpty()).count()<2) throw new MinimumInterest();
         if(dto.getAge()<18) throw new AgeNotValid();
         repo.save(Mapper.mapToUser(dto));
 

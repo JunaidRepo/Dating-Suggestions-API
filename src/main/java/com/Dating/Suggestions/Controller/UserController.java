@@ -1,6 +1,4 @@
 package com.Dating.Suggestions.Controller;
-
-
 import com.Dating.Suggestions.EntityDto.UsersDto;
 import com.Dating.Suggestions.Response.Message;
 import com.Dating.Suggestions.Response.ResponseEnty;
@@ -8,7 +6,6 @@ import com.Dating.Suggestions.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,7 +42,6 @@ public class UserController {
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_DELETE,null, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
-
     @GetMapping("/get/{id}")
     public ResponseEntity<ResponseEnty<UsersDto>> get(@PathVariable Integer id) {
         UsersDto dto=userSer.get(id);
@@ -63,9 +59,4 @@ public class UserController {
         List<UsersDto> dto=userSer.match(id);
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_FETCH,dto, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
-
-
-
-
-
 }
