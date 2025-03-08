@@ -18,8 +18,6 @@ User Management: Allows users to register, update details, and delete their acco
 
 Interest Matching: Matches users based on shared interests.
 
-Recommendation System: Suggests potential matches based on user preferences.
-
 Data Validation: Ensures valid user input, such as age and interest requirements.
 
 Error Handling: Implements custom exception handling for smooth API responses.
