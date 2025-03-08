@@ -26,7 +26,7 @@ Error Handling: Implements custom exception handling for smooth API responses.
 
 Technology Stack
 
-Backend: Spring Boot, Java
+Backend: Spring Boot, Java (core , java 8)
 
 Database: MySQL
 
