@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
+
+@CrossOrigin("http://localhost:5173")
 public class UserController {
     public final UserService userSer;
 

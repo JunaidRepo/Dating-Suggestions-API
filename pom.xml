@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Dating.Suggestions</groupId>
-	<artifactId>Dating-Suggestions</artifactId>
+	<artifactId>Dating-Suggestions(Backend)</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Dating-Suggestions</name>
 	<description>Demo project for Spring Boot</description>
