@@ -16,7 +16,7 @@ Key Functionalities
 
 User Management: Allows users to register, update details, and delete their accounts.
 
-Interest Matching: Matches users based on shared interests.
+Interest Matching: Matches users based on there age and shared interests.
 
 Data Validation: Ensures valid user input, such as age and interest requirements.
 
