@@ -43,10 +43,10 @@ POST  /addAll  Add multiple suggestions
 
 PUT   /update   Update an existing entry
 
-DELETE  /delete/{id}   Delete a suggestion by ID
+DELETE  /delete/{id}   Delete the by ID
 
-GET  /get/{id}   Get a suggestion by ID
+GET  /get/{id}   Get a user by ID
 
-GET   /getAll  Get all suggestions
+GET   /getAll  Get all users
 
 GET  /match/{id}   Find a match for a user
