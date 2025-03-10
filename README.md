@@ -37,11 +37,9 @@ Other: Hibernate, JDBC
 
 API Endpoints
 
-POST   /add   Add a new dating suggestion
+POST   /add   Add a new user
 
-POST  /addAll  Add multiple suggestions
-
-PUT   /update   Update an existing entry
+PUT   /update   Update an existing user
 
 DELETE  /delete/{id}   Delete the by ID
 
