@@ -109,7 +109,7 @@ public class UserServiceImp implements UserService {
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             if (!((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))) {
-                return false; // Found a non-alphabet character
+                return false; 
             }
         }
         return true
