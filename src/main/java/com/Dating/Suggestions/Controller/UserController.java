@@ -1,8 +1,8 @@
 package com.Dating.Suggestions.Controller;
-import com.Dating.Suggestions.EntityDto.Intrest_DetailsDto;
+import com.Dating.Suggestions.EntityDto.UsersDto;
 import com.Dating.Suggestions.Response.Message;
 import com.Dating.Suggestions.Response.ResponseEnty;
-import com.Dating.Suggestions.Service.Intrest_Detailservice;
+import com.Dating.Suggestions.Service.Userservice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,52 +13,52 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:5173")
 public class UserController {
-    public final Intrest_Detailservice Intrest_Detailser;
+    public final Userservice Userser;
 
-    public UserController(Intrest_Detailservice Intrest_Detailser){
-        this.Intrest_Detailser=Intrest_Detailser;
+    public UserController(Userservice Userser){
+        this.Userser=Userser;
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ResponseEnty<String>> add(@RequestBody Intrest_DetailsDto dto){
-        Intrest_Detailser.add(dto);
+    public ResponseEntity<ResponseEnty<String>> add(@RequestBody UsersDto dto){
+        Userser.add(dto);
         return new ResponseEntity<>(new ResponseEnty<>(200, Message.SUCCESS_INSERT,null, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/addAll")
-    public ResponseEntity<ResponseEnty<String>> addAll(@RequestBody List<Intrest_DetailsDto> dto){
-        dto.stream().forEach(i->Intrest_Detailser.add(i));
+    public ResponseEntity<ResponseEnty<String>> addAll(@RequestBody List<UsersDto> dto){
+        dto.stream().forEach(i->Userser.add(i));
         return new ResponseEntity<>(new ResponseEnty<>(200, Message.SUCCESS_INSERT,null, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
 
     @PutMapping("/update")
-    public ResponseEntity<ResponseEnty<String>> update(@RequestBody Intrest_DetailsDto dto) {
-        Intrest_Detailser.update(dto);
+    public ResponseEntity<ResponseEnty<String>> update(@RequestBody UsersDto dto) {
+        Userser.update(dto);
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_UPDATE,null, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<ResponseEnty<String>> delete(@PathVariable Integer id) {
-        Intrest_Detailser.remove(id);
+        Userser.remove(id);
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_DELETE,null, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<ResponseEnty<Intrest_DetailsDto>> get(@PathVariable Integer id) {
-        Intrest_DetailsDto dto=Intrest_Detailser.get(id);
+    public ResponseEntity<ResponseEnty<UsersDto>> get(@PathVariable Integer id) {
+        UsersDto dto=Userser.get(id);
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_FETCH,dto, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<ResponseEnty<List<Intrest_DetailsDto>>> getall() {
-        List<Intrest_DetailsDto> dto=Intrest_Detailser.all();
+    public ResponseEntity<ResponseEnty<List<UsersDto>>> getall() {
+        List<UsersDto> dto=Userser.all();
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_FETCH,dto, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/match/{id}")
-    public ResponseEntity<ResponseEnty<List<Intrest_DetailsDto>>> findMatch(@PathVariable Integer id) {
-        List<Intrest_DetailsDto> dto=Intrest_Detailser.match(id);
+    public ResponseEntity<ResponseEnty<List<UsersDto>>> findMatch(@PathVariable Integer id) {
+        List<UsersDto> dto=Userser.match(id);
         return new ResponseEntity<>(new ResponseEnty<>(200,Message.SUCCESS_FETCH,dto, LocalDateTime.now()),HttpStatus.ACCEPTED);
     }
 }

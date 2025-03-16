@@ -2,14 +2,14 @@ package com.Dating.Suggestions.EntityDto;
 
 import java.util.List;
 
-public class Intrest_DetailsDto {
+public class UsersDto {
     private Integer id;
     private String name;
     private String gender;
     private int age;
     private List<InterestDto> interest;
 
-    public Intrest_DetailsDto(Integer id, String name, String gender, int age, List<InterestDto> interest) {
+    public UsersDto(Integer id, String name, String gender, int age, List<InterestDto> interest) {
         this.id = id;
         this.name = name;
         this.gender = gender;

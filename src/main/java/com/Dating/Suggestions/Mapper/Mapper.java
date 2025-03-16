@@ -2,21 +2,21 @@ package com.Dating.Suggestions.Mapper;
 
 
 import com.Dating.Suggestions.Entity.Interest;
-import com.Dating.Suggestions.Entity.Intrest_Details;
+import com.Dating.Suggestions.Entity.Users;
 import com.Dating.Suggestions.EntityDto.InterestDto;
-import com.Dating.Suggestions.EntityDto.Intrest_DetailsDto;
+import com.Dating.Suggestions.EntityDto.UsersDto;
 
 import java.util.List;
 
 public class Mapper {
 
-    public static Intrest_DetailsDto mapToUserDto(Intrest_Details use){
+    public static UsersDto mapToUserDto(Users use){
         List<InterestDto> dt=use.getuInterest().stream().map(i->new InterestDto(i.getId(),i.getInterest())).toList();
-        return new Intrest_DetailsDto(use.getId(),use.getuName(),use.getuGender(),use.getuAge(),dt);
+        return new UsersDto(use.getId(),use.getuName(),use.getuGender(),use.getuAge(),dt);
     }
 
-    public static Intrest_Details mapToUser(Intrest_DetailsDto dto) {
+    public static Users mapToUser(UsersDto dto) {
         List<Interest> lst = dto.getInterest().stream().map(i ->new Interest(0,i.getInterest())).toList();
-        return new Intrest_Details(dto.getId(),dto.getName(),dto.getGender(),dto.getAge(),lst);
+        return new Users(dto.getId(),dto.getName(),dto.getGender(),dto.getAge(),lst);
     }
 }

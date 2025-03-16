@@ -9,14 +9,14 @@ import com.Dating.Suggestions.Exceptions.UserExceptions.CorrectDetails;
 import com.Dating.Suggestions.Exceptions.UserExceptions.Missing;
 import com.Dating.Suggestions.Mapper.Mapper;
 import com.Dating.Suggestions.Repo.repo;
-import com.Dating.Suggestions.Service.UserService;
+import com.Dating.Suggestions.Service.Userservice;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImp implements Userservice {
     private final repo repo;
     public UserServiceImp(repo repo){
         this.repo=repo;

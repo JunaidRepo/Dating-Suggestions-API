@@ -7,7 +7,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-public class Intrest_Details {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Intrest_Details {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Interest> uInterest;
 
-    public Intrest_Details(int id,String uName, String uGender, int uAge, List<Interest> uInterest) {
+    public Users(int id,String uName, String uGender, int uAge, List<Interest> uInterest) {
         this.id=id;
         this.uName = uName;
         this.uGender = uGender;
