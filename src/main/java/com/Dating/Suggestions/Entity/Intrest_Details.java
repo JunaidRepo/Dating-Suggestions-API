@@ -1,6 +1,5 @@
 package com.Dating.Suggestions.Entity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-public class Users {
+public class Intrest_Details {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +20,7 @@ public class Users {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Interest> uInterest;
 
-    public Users(int id,String uName, String uGender, int uAge, List<Interest> uInterest) {
+    public Intrest_Details(int id,String uName, String uGender, int uAge, List<Interest> uInterest) {
         this.id=id;
         this.uName = uName;
         this.uGender = uGender;

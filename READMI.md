@@ -14,9 +14,9 @@ Follows RESTful principles for API design.
 
 Key Functionalities
 
-User Management: Allows users to register, update details, and delete their accounts.
+User Management: Allows Intrest_Details to register, update details, and delete their accounts.
 
-Interest Matching: Matches users based on shared interests.
+Interest Matching: Matches Intrest_Details based on shared interests.
 
 Recommendation System: Suggests potential matches based on user preferences.
 
@@ -76,7 +76,7 @@ POST
 
 /addAll
 
-Add multiple users
+Add multiple Intrest_Details
 
 PUT
 
@@ -117,17 +117,17 @@ dating-suggestions-api/
 │   │   │   ├── controller/
 │   │   │   │   ├── UserController.java
 │   │   │   ├── service/
-│   │   │   │   ├── UserService.java
+│   │   │   │   ├── Intrest_Detailservice.java
 │   │   │   ├── service/implementation/
-│   │   │   │   ├── UserServiceImp.java
+│   │   │   │   ├── Intrest_DetailserviceImp.java
 │   │   │   ├── repository/
 │   │   │   │   ├── repo.java
 │   │   │   ├── model/
 │   │   │   │   ├── Interest.java
-│   │   │   │   ├── Users.java
+│   │   │   │   ├── Intrest_Details.java
 │   │   │   ├── dto/
 │   │   │   │   ├── InterestDto.java
-│   │   │   │   ├── UsersDto.java
+│   │   │   │   ├── Intrest_DetailsDto.java
 │   │   │   ├── exceptions/
 │   │   │   │   ├── Handler.java
 │   │   │   ├── exceptions/interest/

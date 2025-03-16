@@ -1,6 +1,7 @@
 package com.Dating.Suggestions.Service.Implementation;
 import com.Dating.Suggestions.Entity.Interest;
 import com.Dating.Suggestions.Entity.Users;
+import com.Dating.Suggestions.EntityDto.InterestDto;
 import com.Dating.Suggestions.EntityDto.UsersDto;
 import com.Dating.Suggestions.Exceptions.InterestException.MinimumInterest;
 import com.Dating.Suggestions.Exceptions.UserExceptions.AgeNotValid;
@@ -32,8 +33,10 @@ public class UserServiceImp implements UserService {
             if(dto.getInterest()==null || dto.getInterest().isEmpty()) sb.append("Interest ");
             throw new Missing(sb.toString());
         }
-        if(dto.getAge()<18) throw new AgeNotValid();
+        if(!checkChar(dto.getName())) throw new RuntimeException("Other than Characters ");
+        if(dto.getAge()<18 || dto.getAge()>40) throw new AgeNotValid();
         if(dto.getInterest().size()<2 || dto.getInterest().stream().filter(i->!i.getInterest().trim().isEmpty()).count()<2) throw new MinimumInterest();
+        if(!IntrestCheck(dto.getInterest())) throw new RuntimeException("Other than Characters ");
         Users u= Mapper.mapToUser(dto);
         repo.save(u);
     }
@@ -65,8 +68,10 @@ public class UserServiceImp implements UserService {
             if(dto.getInterest()==null || dto.getInterest().isEmpty()) sb.append("Interest ");
             throw  new Missing(sb.toString());
         }
+        if(!checkChar(dto.getName())) throw new RuntimeException("Other than Characters ");
         if(dto.getInterest().size()<2 || dto.getInterest().stream().filter(i->!i.getInterest().trim().isEmpty()).count()<2) throw new MinimumInterest();
-        if(dto.getAge()<18) throw new AgeNotValid();
+        if(dto.getAge()<18 || dto.getAge()>40) throw new AgeNotValid();
+        if(!IntrestCheck(dto.getInterest())) throw new RuntimeException("Other than Characters ");
         repo.save(Mapper.mapToUser(dto));
 
     }
@@ -84,7 +89,7 @@ public class UserServiceImp implements UserService {
         if(opt.isEmpty()) throw new CorrectDetails();
         List<Users> totalUser=repo.findAll();
         List<UsersDto> totalDto=totalUser.stream()
-                .filter(i->i.getId()!=opt.get().getId() &&!(i.getuGender()).equals(opt.get().getuGender()))
+                .filter(i->!(i.getuGender()).equals(opt.get().getuGender()))
                 .sorted((i,j)->{
                     int val1=Math.abs(i.getuAge()-opt.get().getuAge());
                     int val2=Math.abs(j.getuAge()-opt.get().getuAge());
@@ -102,6 +107,12 @@ public class UserServiceImp implements UserService {
         Set<Interest> s3=new HashSet<>(s1);
          s3.retainAll(s2);
         return s3.size();
+    }
+    private boolean checkChar(String s){
+        return s.matches("[a-zA-Z ]+");
+    }
+    private boolean IntrestCheck(List<InterestDto> lst){
+        return lst.stream().allMatch(i->checkChar(i.getInterest()));
     }
 
 
